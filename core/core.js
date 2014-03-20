@@ -53,13 +53,13 @@ require([
         //Not keen on this, but want to make the application dev process as idiot proof as possible
         switch(appsize)
         {
-        case 'mini':
+        case 'small':
             size = 'col-md-3'
             break;
-        case 'small':
+        case 'medium':
             size = 'col-md-4'
             break;
-        case 'medium':
+        case 'large':
             size = 'col-md-6'
             break;
         default:

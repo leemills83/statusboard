@@ -2,9 +2,18 @@ define(function(require) {
 
     function statusboard() {
 
+        this.api = function() {
+
+        }
+
         this.el = function() {
             return 'Moo!!'
-        };
+        }
+
+        this.flip = function() {
+            //flip the appcard showing the back/front.
+            //back of the card shows the settings for each app
+        }
 
         this.loadcss = function(url) {
             var link = document.createElement("link");
@@ -12,10 +21,6 @@ define(function(require) {
             link.rel = "stylesheet";
             link.href = url;
             $("head")[0].appendChild(link);
-        }
-
-        this.api = function() {
-
         }
 
         this.view = function(template, element, clasz, options) {
