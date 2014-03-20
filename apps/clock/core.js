@@ -9,11 +9,7 @@ define(function (require) {
         this.defaultAttrs({});
 
         
-        require(['text!./views/clock.hbs'], function(clockview){
-            this.$('.app').html(Handlebars.compile(clockview));
-        });
 
-        console.log('clock', this);
 
         this.doSomething = function() {
             console.log('click');
@@ -24,7 +20,9 @@ define(function (require) {
         }
 
         this.after('initialize', function() {
-            // this.view(['text!apps/clock/views/clock.hbs'], '.app');
+            var front = {view: 'apps/clock/views/clock.hbs'};
+
+            this.view(front);
             this.loadcss('apps/clock/css/clock.css');
             this.startclock();
             this.on('click', this.doSomething);

@@ -6,10 +6,6 @@ define(function(require) {
 
         }
 
-        this.el = function() {
-            return 'Moo!!'
-        }
-
         this.flip = function() {
             //flip the appcard showing the back/front.
             //back of the card shows the settings for each app
@@ -25,20 +21,38 @@ define(function(require) {
             }
         }
 
-        this.view = function(template, element, clasz, options) {
-            if ($.isArray(template)) {
-                require(template, function(newview){
-                    var view = Handlebars.compile(newview);
-                    
-                    if (options) {
-                        view(options)
-                    };
+        /* 
+            options.element = element to apply view too (if null applies to app $node)
+            options.clazz = array of classes to be applied to main element
+            options.view = hbr template to apply
+            options.hbr = variables to be passed into hbr view 
+        */
+        this.view = function(options) {
+            if (!options.view) return;
 
-                    this.$(element).html(view);
-                });
-            } else {
-                console.warn('invalid array of views: ', template);
-            }
+            var self = this.$node,
+                viewz = [];
+
+
+            viewz.push("text!/"+ options.view +"");
+
+            require(viewz, function(newview){
+                var view = Handlebars.compile(newview);
+
+                if (typeof options.hbr === 'object') {
+                    view(options)
+                };
+
+                if (options.clazz) {
+                    //Add class support
+                };
+
+                if (options.element) {
+                    self.find(options.element).html(view);
+                } else {
+                    self.html(view);
+                };
+            });
         }
     }
 
