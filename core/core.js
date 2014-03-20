@@ -1,6 +1,7 @@
 require.config({
   paths: {
         jquery: 'libs/jquery/dist/jquery.min',
+        gridster: 'libs/gridster/jquery.gridster.min',
         bootstrapjs: 'libs/bootstrap/js/bootstrap.min',
         es5shim: 'libs/es5-shim/es5-shim.min',
         es5sham: 'libs/es5-shim/es5-sham.min',
@@ -20,6 +21,9 @@ require.config({
     },
     'bootstrapjs': {
         deps: ['jquery']
+    },
+    'gridster': {
+        deps: ['jquery']
     }
   }
 });
@@ -27,9 +31,9 @@ require.config({
 require([
         'text!./applist.json',
         'jquery', 'bootstrapjs',
-        'handlebars'
+        'handlebars', 'gridster'
         ], 
-        function (Applist, $, Handlebars) {
+        function (Applist, $, Bootstrap, Handlebars, Gridster) {
     var appslist = JSON.parse(Applist),
         loadcss = function (url) { //This needs to seperated as a require module and the statusboard mixin needs to reference
             if(!$("link[href='"+ url +"']").length) {
@@ -44,6 +48,7 @@ require([
     //ERROR CHECK THE MANIFEST FILE HERE//
 
     loadcss('core/libs/bootstrap/css/bootstrap.min.css');
+    loadcss('core/libs/gridster/jquery.gridster.min.css');
     loadcss('core/css/styles.css');
 
     for (var i=0; i<appslist.apps.length; i++) {

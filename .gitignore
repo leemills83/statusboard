@@ -1,4 +1,5 @@
-applist.json
+*applist.json
+*.DS_Store
 
 #Folders
 node_modules/
