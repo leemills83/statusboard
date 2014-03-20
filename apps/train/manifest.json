@@ -1,0 +1,9 @@
+{
+    "appname":"train",
+    "size": {
+        "row":"1",
+        "col":"2",
+        "sizex":"2",
+        "sizey":"1"
+    }
+}

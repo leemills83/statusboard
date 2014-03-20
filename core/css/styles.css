@@ -9,7 +9,7 @@ body {
   height: auto;
   width: 100%;
 }
-.container-fluid .app {
+.gridster .app {
   border-radius: 10px;
   background: #282020;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #333333), color-stop(100%, #171717));

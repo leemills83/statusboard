@@ -19,10 +19,9 @@ define(function (require) {
         }
 
         this.after('initialize', function() {
-            var self =this;
-            require(['text!./views/fos-cnv.hbs'], function(foscnvview){
-                self.$node.html(Handlebars.compile(foscnvview));
-            });
+            var front = {view: 'apps/fos-cnv/views/fos-cnv.hbs'};
+
+            this.view(front);
             this.loadcss('apps/fos-cnv/css/fos-cnv.css');
         });
     }
