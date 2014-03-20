@@ -8,8 +8,9 @@ define(function (require) {
 
         this.defaultAttrs({});
 
-        
-
+        require(['text!./views/clock.hbs'], function(clockview){
+            this.$('.app').html(Handlebars.compile(clockview));
+        });
 
         this.doSomething = function() {
             console.log('click');

@@ -27,12 +27,12 @@ require.config({
     }
   }
 });
- 
+
 require([
         'text!./applist.json',
         'jquery', 'bootstrapjs',
         'handlebars', 'gridster'
-        ], 
+        ],
         function (Applist, $, Bootstrap, Handlebars, Gridster) {
     var appslist = JSON.parse(Applist),
         loadcss = function (url) { //This needs to seperated as a require module and the statusboard mixin needs to reference
@@ -51,27 +51,32 @@ require([
     loadcss('core/libs/gridster/jquery.gridster.min.css');
     loadcss('core/css/styles.css');
 
+    // $(".gridster .app").gridster({
+    //     widget_margins: [10, 10],
+    //     widget_base_dimensions: [140, 140]
+    // });
+
     for (var i=0; i<appslist.apps.length; i++) {
         var appname = appslist.apps[i].appname,
             appsize = appslist.apps[i].size,
-            size = '',
+            size = 'data-row="'+appsize.row+'" data-col="'+appsize.col+'" data-sizex="'+appsize.sizex+'" data-sizey="'+appsize.sizey+'"',
             filepath = '/apps/'+ appname +'/core.js';
 
         //Not keen on this, but want to make the application dev process as idiot proof as possible
-        switch(appsize)
-        {
-        case 'small':
-            size = 'col-md-3'
-            break;
-        case 'medium':
-            size = 'col-md-4'
-            break;
-        case 'large':
-            size = 'col-md-6'
-            break;
-        default:
-            size = 'col-md-12'
-        }
+        // switch(appsize)
+        // {
+        // case 'small':
+        //     size = 'col-md-3'
+        //     break;
+        // case 'medium':
+        //     size = 'col-md-4'
+        //     break;
+        // case 'large':
+        //     size = 'col-md-6'
+        //     break;
+        // default:
+        //     size = 'col-md-12'
+        // }
 
         $("#core").append("<div class='"+ appname +" app "+ size +"'></div>");
 

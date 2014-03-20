@@ -1,4 +1,9 @@
 {
-    "appname": "clock",
-    "size": "small"
+    "appname":"clock",
+    "size": {
+        "row":"1",
+        "col":"1",
+        "sizex":"1",
+        "sizey":"1"
+    }
 }

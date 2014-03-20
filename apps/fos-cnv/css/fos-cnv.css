@@ -1,0 +1,51 @@
+.fos-cnv {
+  padding: 0px;
+}
+.fos-cnv ul {
+  padding: 0;
+  margin: 0;
+}
+.fos-cnv li {
+  list-style: none;
+  position: relative;
+  margin: 0 0 2px 0;
+  padding: 1.1em 0 0.9em 16px;
+  color: #333333;
+}
+.fos-cnv li a {
+  position: relative;
+  z-index: 2;
+  display: block;
+  text-decoration: none;
+  color: #333333;
+  text-transform: uppercase;
+  font-size: 16px;
+}
+.fos-cnv li a:hover {
+  color: #f2f2f2;
+}
+.fos-cnv li span {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  display: block;
+  height: 100%;
+  background: #7db51c;
+  color: #11326a;
+  text-transform: uppercase;
+  font-size: 16px;
+  padding: 7px;
+  text-align: right;
+  min-width: 170px;
+}
+.fos-cnv li:hover span {
+  background: #333333;
+  color: #f2f2f2;
+  text-indent: 0;
+  text-align: right;
+  /*padding: 14px;*/
+
+}
+.fos-cnv li:hover a {
+  color: #f2f2f2;
+}

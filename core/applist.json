@@ -1,1 +1,1 @@
-{"apps":[{"appname":"clock","size":"small"}]}
+{"apps":[{"appname":"clock","size":{"row":"1","col":"1","sizex":"1","sizey":"1"}},{"appname":"fos-cnv","size":{"row":"1","col":"2","sizex":"2","sizey":"1"}}]}

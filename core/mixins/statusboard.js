@@ -21,18 +21,17 @@ define(function(require) {
             }
         }
 
-        /* 
+        /*
             options.element = element to apply view too (if null applies to app $node)
             options.clazz = array of classes to be applied to main element
             options.view = hbr template to apply
-            options.hbr = variables to be passed into hbr view 
+            options.hbr = variables to be passed into hbr view
         */
         this.view = function(options) {
             if (!options.view) return;
 
             var self = this.$node,
                 viewz = [];
-
 
             viewz.push("text!/"+ options.view +"");
 
