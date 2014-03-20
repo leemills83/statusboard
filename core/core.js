@@ -31,12 +31,14 @@ require([
         ], 
         function (Applist, $, Handlebars) {
     var appslist = JSON.parse(Applist),
-        loadcss = function (url) {
-            var link = document.createElement("link");
-            link.type = "text/css";
-            link.rel = "stylesheet";
-            link.href = url;
-            $("head")[0].appendChild(link);
+        loadcss = function (url) { //This needs to seperated as a require module and the statusboard mixin needs to reference
+            if(!$("link[href='"+ url +"']").length) {
+                var link = document.createElement("link");
+                link.type = "text/css";
+                link.rel = "stylesheet";
+                link.href = url;
+                $("head")[0].appendChild(link);
+            }
         };
 
     //ERROR CHECK THE MANIFEST FILE HERE//
