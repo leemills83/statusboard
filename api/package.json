@@ -5,6 +5,13 @@
   "private": true,
   "dependencies": {
     "express": "3.5.1",
-    "passport": "0.2.0"
-  }
+    "passport": "0.2.0",
+    "passport-google": "0.2.0"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://www.opensource.org/licenses/MIT"
+    }
+  ]
 }

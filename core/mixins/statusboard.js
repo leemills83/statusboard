@@ -33,7 +33,7 @@ define(function(require) {
             var self = this.$node,
                 viewz = [];
 
-            viewz.push("text!/"+ options.view +"");
+            viewz.push("text!/blocks/"+ options.view +"");
 
             require(viewz, function(newview){
                 var view = Handlebars.compile(newview);

@@ -2,10 +2,10 @@ module.exports = function(grunt) {
 
     // Project configuration.
     grunt.initConfig({
-        apps: 'apps/*/*.js',
-        appslist : {
+        blocks: 'blocks/*/*.js',
+        blocklist : {
             manifest: {},
-            filepath: './core/applist.json'
+            filepath: './core/blocklist.json'
         },
         pkg: grunt.file.readJSON('package.json'),
         tasks: 'tasks/*.js',
@@ -17,7 +17,7 @@ module.exports = function(grunt) {
             "globals": {
                 "jQuery": true
             },
-            apps: '<% apps %>',
+            blocks: '<% blocks %>',
             gruntfile: {
                 src: 'Gruntfile.js'
             },
@@ -27,7 +27,7 @@ module.exports = function(grunt) {
     
     // Default task(s).
     grunt.task.loadTasks('tasks');
-    grunt.registerTask('default', ['appslist']);
+    grunt.registerTask('default', ['blocklist']);
 
     //Load prepackaged tasks 
     grunt.loadNpmTasks('grunt-contrib-jshint');

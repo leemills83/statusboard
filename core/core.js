@@ -29,12 +29,12 @@ require.config({
 });
 
 require([
-        'text!./applist.json',
+        'text!./blocklist.json',
         'jquery', 'bootstrapjs',
          'gridster', 'handlebars'
         ],
-        function (Applist, $, Bootstrap, Handlebars, Gridster) {
-    var appslist = JSON.parse(Applist),
+        function (Blocklist, $, Bootstrap, Handlebars, Gridster) {
+    var blocklist = JSON.parse(Blocklist),
         loadcss = function (url) { //This needs to seperated as a require module and the statusboard mixin needs to reference
             if(!$("link[href='"+ url +"']").length) {
                 var link = document.createElement("link");
@@ -51,21 +51,20 @@ require([
     loadcss('core/libs/gridster/jquery.gridster.min.css');
     loadcss('core/css/styles.css');
 
-    $("#core").gridster({
+    var gridster = $("#core > ul").gridster({
         widget_margins: [10, 10],
         widget_base_dimensions: [200, 200]
-    });
+    }).data('gridster');
 
-    for (var i=0; i<appslist.apps.length; i++) {
-        var appname = appslist.apps[i].appname,
-            appsize = appslist.apps[i].size,
-            size = 'data-row="'+appsize.row+'" data-col="'+appsize.col+'" data-sizex="'+appsize.sizex+'" data-sizey="'+appsize.sizey+'"',
-            filepath = '/apps/'+ appname +'/core.js';
+    for (var i=0; i<blocklist.blocks.length; i++) {
+        var blockname = blocklist.blocks[i].blockname,
+            blocksize = blocklist.blocks[i].size,
+            filepath = '/blocks/'+ blockname +'/core.js';
 
-        $("#core").append("<div class='"+ appname +" app "+ size +"'></div>");
+        gridster.add_widget("<li class='"+ blockname +" app'></li>", blocksize.sizex, blocksize.sizey);
 
         require([filepath], function(application) {
-            application.attachTo('div.'+appname);
+            application.attachTo('li.'+blockname);
         });
     };
 });
