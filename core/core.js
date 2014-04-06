@@ -54,7 +54,8 @@ require([
                         blocksize = blocklist.blocks[index].size,
                         filepath = '/blocks/'+ blockname +'/core.js';
 
-                    gridster.add_widget("<li class='"+ blockname +" app'></li>", blocksize.sizex, blocksize.sizey);
+                    //Issues with col & row (if not set then 1st block stick to top of page)
+                    gridster.add_widget("<li class='"+ blockname +" app'></li>", blocksize.sizex, blocksize.sizey, blocksize.col, blocksize.row);
 
                     require([filepath], function(application) {
                         application.attachTo('li.'+blockname);
@@ -71,7 +72,7 @@ require([
             loadcss('core/css/styles.css');
 
             var gridster = $("#core > ul").gridster({
-                widget_margins: [10, 10],
+                widget_margins: [5, 5],
                 widget_base_dimensions: [200, 200]
             }).data('gridster');
 
