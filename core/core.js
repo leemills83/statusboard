@@ -30,41 +30,50 @@ require.config({
 
 require([
         'text!./blocklist.json',
-        'jquery', 'bootstrapjs',
-         'gridster', 'handlebars'
+        'jquery', 'bootstrapjs', 'handlebars', 'gridster'
         ],
         function (Blocklist, $, Bootstrap, Handlebars, Gridster) {
-    var blocklist = JSON.parse(Blocklist),
-        loadcss = function (url) { //This needs to seperated as a require module and the statusboard mixin needs to reference
-            if(!$("link[href='"+ url +"']").length) {
-                var link = document.createElement("link");
-                link.type = "text/css";
-                link.rel = "stylesheet";
-                link.href = url;
-                $("head")[0].appendChild(link);
-            }
-        };
 
-    //ERROR CHECK THE MANIFEST FILE HERE//
+            var blocklist = JSON.parse(Blocklist),
+                index = 0;
+            
+            function loadcss(url) { //This needs to seperated as a require module and the statusboard mixin needs to reference
+                if(!$("link[href='"+ url +"']").length) {
+                    var link = document.createElement("link");
+                    link.type = "text/css";
+                    link.rel = "stylesheet";
+                    link.href = url;
+                    $("head")[0].appendChild(link);
+                }
+            };
 
-    loadcss('core/libs/bootstrap/css/bootstrap.min.css');
-    loadcss('core/libs/gridster/jquery.gridster.min.css');
-    loadcss('core/css/styles.css');
+            //Done like this rather than for loop to prevent race conditions with the require
+            function loadBlock() {
+                if (index < blocklist.blocks.length) {
+                    var blockname = blocklist.blocks[index].blockname,
+                        blocksize = blocklist.blocks[index].size,
+                        filepath = '/blocks/'+ blockname +'/core.js';
 
-    var gridster = $("#core > ul").gridster({
-        widget_margins: [10, 10],
-        widget_base_dimensions: [200, 200]
-    }).data('gridster');
+                    gridster.add_widget("<li class='"+ blockname +" app'></li>", blocksize.sizex, blocksize.sizey);
 
-    for (var i=0; i<blocklist.blocks.length; i++) {
-        var blockname = blocklist.blocks[i].blockname,
-            blocksize = blocklist.blocks[i].size,
-            filepath = '/blocks/'+ blockname +'/core.js';
+                    require([filepath], function(application) {
+                        application.attachTo('li.'+blockname);
+                        ++index;
+                        loadBlock();
+                    });
+                };
+            };
 
-        gridster.add_widget("<li class='"+ blockname +" app'></li>", blocksize.sizex, blocksize.sizey);
+            //ERROR CHECK THE MANIFEST FILE HERE//
 
-        require([filepath], function(application) {
-            application.attachTo('li.'+blockname);
-        });
-    };
+            loadcss('core/libs/bootstrap/css/bootstrap.min.css');
+            loadcss('core/libs/gridster/jquery.gridster.min.css');
+            loadcss('core/css/styles.css');
+
+            var gridster = $("#core > ul").gridster({
+                widget_margins: [10, 10],
+                widget_base_dimensions: [200, 200]
+            }).data('gridster');
+
+            loadBlock();
 });

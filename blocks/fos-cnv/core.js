@@ -19,7 +19,7 @@ define(function (require) {
         }
 
         this.after('initialize', function() {
-            var front = {view: 'blocks/fos-cnv/views/fos-cnv.hbs'};
+            var front = {view: 'fos-cnv/views/fos-cnv.hbs'};
 
             this.view(front);
             this.loadcss('blocks/fos-cnv/css/fos-cnv.css');

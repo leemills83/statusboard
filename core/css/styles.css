@@ -23,3 +23,6 @@ body {
   min-height: 60px;
   padding: 10px;
 }
+.gridster li.app:hover {
+  cursor: pointer;
+}
