@@ -1,0 +1,64 @@
+
+.fos-cnv {
+@dkblue: #11326A;
+  @blue: #0071B9;
+ @green: #7DB51C;
+@orange: #F08A06;
+@yellow: #FAC000;
+@purple: #503391;
+@dkgrey: #333333;
+@ltgrey: #bfbfb6;
+ @white: #F2F2F2;
+
+    padding: 0px;
+    ul {
+        padding: 0;
+        margin: 0;
+    }
+
+    li {
+        list-style: none;
+        position: relative;
+        margin: 0 0 2px 0;
+        padding: 1.1em 0 0.9em 16px;
+        color: @dkgrey;
+
+        a {
+            position: relative;
+            z-index: 2;
+            display: block;
+            text-decoration: none;
+            color: @dkgrey;
+            text-transform: uppercase;
+            font-size: 16px;
+
+            &:hover {
+                color: @white;
+            }
+        }
+        span {
+            position: absolute;
+            top: 0px; left: 0px;
+            display: block;
+            height: 100%;
+            background: @green;
+            color: @dkblue;
+            text-transform: uppercase;
+            font-size: 16px;
+            padding: 7px;
+            text-align: right;
+            min-width: 135px;
+        }
+        &:hover {
+            span {
+                background: @dkgrey;
+                color: @white;
+                text-indent: 0;
+                text-align: right;
+            }
+            a {
+                color: @white;
+            }
+        }
+    }
+}
