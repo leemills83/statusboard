@@ -35,9 +35,14 @@ require([
         function (Blocklist, $, Bootstrap, Handlebars, Gridster) {
 
             var blocklist = JSON.parse(Blocklist),
-                index = 0;
+                index = 0,
+                gridster = $("#core > ul").gridster({
+                    widget_margins: [5, 5],
+                    widget_base_dimensions: [200, 200]
+                }).data('gridster');
             
-            function loadcss(url) { //This needs to seperated as a require module and the statusboard mixin needs to reference
+            //This needs to seperated as a require module and the statusboard mixin needs to reference
+            function loadcss(url) {
                 if(!$("link[href='"+ url +"']").length) {
                     var link = document.createElement("link");
                     link.type = "text/css";
@@ -70,11 +75,6 @@ require([
             loadcss('core/libs/bootstrap/css/bootstrap.min.css');
             loadcss('core/libs/gridster/jquery.gridster.min.css');
             loadcss('core/css/styles.css');
-
-            var gridster = $("#core > ul").gridster({
-                widget_margins: [5, 5],
-                widget_base_dimensions: [200, 200]
-            }).data('gridster');
 
             loadBlock();
 });

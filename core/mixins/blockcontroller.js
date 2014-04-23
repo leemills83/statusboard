@@ -1,10 +1,6 @@
 define(function(require) {
 
-    function statusboard() {
-
-        this.api = function() {
-
-        }
+    function blockcontroller() {
 
         this.flip = function() {
             //flip the appcard showing the back/front.
@@ -55,6 +51,6 @@ define(function(require) {
         }
     }
 
-    return statusboard;
+    return blockcontroller;
 
 });

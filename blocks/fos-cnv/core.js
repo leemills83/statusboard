@@ -1,8 +1,8 @@
 define(function (require) {
     var defineComponent = require('flight/component'),
-        statusboard = require('mixin/statusboard');
+        block = require('mixin/blockcontroller');
 
-    return defineComponent(foscnv, statusboard);
+    return defineComponent(foscnv, block);
 
     function foscnv() {
 
