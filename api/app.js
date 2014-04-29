@@ -6,8 +6,8 @@ var express = require('express'),
     // GoogleStrategy = require('passport-google').Strategy,
     app = express();
 
-app.get('/hello', function(req, res){
-    res.send('Hello World');
+app.get('/weather', function(req, res){
+    //https://api.forecast.io/forecast/API_KEY/LAT,LONG
 });
 
 fs.readFile('../index.html', function (err, html) {

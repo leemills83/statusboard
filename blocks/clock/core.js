@@ -1,6 +1,7 @@
 define(function (require) {
     var defineComponent = require('flight/component'),
-        block = require('mixin/blockcontroller');
+        block = require('mixin/blockcontroller'),
+        flipclock = require('block/clock/libs/flipclock/flipclock.min');
 
     return defineComponent(clock, block);
 
@@ -8,21 +9,25 @@ define(function (require) {
 
         this.defaultAttrs({});
 
-        this.doSomething = function() {
-            console.log('click');
-        }
+        this.startClock = function() {
+            var clock = this.$node.find('div.clock-face');
 
-        this.startclock = function() {
-            console.log('here');
+            clock.FlipClock({
+                clockFace: 'TwentyFourHourClock'
+            });
+            console.log('starting clock', this);
         }
 
         this.after('initialize', function() {
-            var front = {view: 'clock/views/clock.hbs'};
-
-            this.view(front);
+            var frontView = {view:'clock/views/front.hbs', options:null, clazz:null},
+                rearView = {view:'clock/views/rear.hbs'};
+            
+            this.loadcss('blocks/clock/libs/flipclock/flipclock.css');
             this.loadcss('blocks/clock/css/clock.css');
-            this.startclock();
-            this.on('click', this.doSomething);
+
+            this.blockView({front:frontView,rear:rearView});
+
+            this.startClock();
         });
     }
 });

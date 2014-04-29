@@ -1,9 +1,9 @@
 {
-    "blockname":"clock",
+    "blockname":"weather",
     "size": {
         "row":"1",
         "col":"1",
-        "sizex":"2",
+        "sizex":"1",
         "sizey":"1"
     }
 }

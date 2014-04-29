@@ -7,7 +7,7 @@ require.config({
         es5sham: 'libs/es5-shim/es5-sham.min',
         text: 'libs/require/text',
         handlebars: 'libs/handlebars',
-        app: '../apps',
+        block: '../blocks',
         mixin: 'mixins'
   },
   map: {
@@ -60,7 +60,7 @@ require([
                         filepath = '/blocks/'+ blockname +'/core.js';
 
                     //Issues with col & row (if not set then 1st block stick to top of page)
-                    gridster.add_widget("<li class='"+ blockname +" app'></li>", blocksize.sizex, blocksize.sizey, blocksize.col, blocksize.row);
+                    gridster.add_widget("<li class='"+ blockname +" block'></li>", blocksize.sizex, blocksize.sizey, blocksize.col, blocksize.row);
 
                     require([filepath], function(application) {
                         application.attachTo('li.'+blockname);

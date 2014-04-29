@@ -2,25 +2,21 @@ define(function (require) {
     var defineComponent = require('flight/component'),
         block = require('mixin/blockcontroller');
 
-    return defineComponent(foscnv, block);
+    return defineComponent(clock, block);
 
-    function foscnv() {
+    function clock() {
 
         this.defaultAttrs({});
-
-        console.log('foscnv', this);
 
         this.doSomething = function() {
             console.log('click');
         }
 
-        this.startclock = function() {
-            console.log('here');
-        }
-
         this.after('initialize', function() {
+            var front = {view: 'weather/views/weather.hbs'};
+            
+            this.loadcss('blocks/weather/css/weather.css');
 
-            this.loadcss('blocks/fos-cnv/css/fos-cnv.css');
             this.on('click', this.doSomething);
         });
     }
